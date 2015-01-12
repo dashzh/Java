@@ -1,14 +1,7 @@
 package task1;
 
-/** Общий вид квадратного уравнения : aX*X + bX + c = 0, где a, b, c - коэффициенты;
- */
 public class Resolver {
-	/**
-	 * Создает новое квадратное уравнение общего вида.
-	 * @param a коэффициент при x*x, a != 0;
-	 * @param b коэффициент при x;
-	 * @param c свободный коэффициент;
-	 */
+	// a!=0
 	public Resolver(float a, float b, float c) {
 		if (a == 0)
 			throw new IllegalArgumentException("a equals zero");
@@ -23,10 +16,7 @@ public class Resolver {
 
 	public float getC() { return c; }
 
-	/**
-	 * Решает квадратное уравнение представленное данным экземпляром класса.
-	 * @return кортеж с найденными корнями уравнения или null в случае отсутствия корней.
-	 */
+	
 	public Root<Double, Double> resolve() {
 		if (!isResolved) {
 			double discr = Discriminant();
@@ -47,13 +37,7 @@ public class Resolver {
 		return result;
 	}
 
-	/**
-	 * Вычисляет дискриминант квадратного уравнения вычесленный на основании указанных коэффициентов.
-	 * @param a коэффициент при x*x;
-	 * @param b коэффициент при x;
-	 * @param c свободный коэффициент;
-	 * @return Дискриминант квадратного уравнения вычесленный на основании указанных коэффициентов.
-	 */
+	
 	public double Discriminant() {
 		return (double) b * b - 4d * a * c;
 	}
