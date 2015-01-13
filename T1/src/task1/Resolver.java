@@ -1,7 +1,7 @@
 package task1;
 
 public class Resolver {
-	// a!=0
+	// Создание квадратного уравнения (а!=0)
 	public Resolver(float a, float b, float c) {
 		if (a == 0)
 			throw new IllegalArgumentException("a equals zero");
@@ -16,7 +16,7 @@ public class Resolver {
 
 	public float getC() { return c; }
 
-	
+	/// Решение уравнения - кортеж с корнями/null
 	public Root<Double, Double> resolve() {
 		if (!isResolved) {
 			double discr = Discriminant();
