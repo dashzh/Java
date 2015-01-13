@@ -6,11 +6,10 @@ import java.util.Map.Entry;
 
 public class MapUtil {
 	
-	/**
-	 * Преобразует распределитель в его строковое представление вида {{key : x, value : y}, {key : x, value : y}, ...}
-	 * @param m искомый распределитель
-	 * @return строковое представление распределителя
-	 */
+	
+	//РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЂР°СЃРїСЂРµРґРµР»РёС‚РµР»СЊ РІ РµРіРѕ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РІРёРґР° {{key : x, value : y}, {key : x, value : y}, ...}
+	// parametrs m РёСЃРєРѕРјС‹Р№ СЂР°СЃРїСЂРµРґРµР»РёС‚РµР»СЊ
+	// return СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЂР°СЃРїСЂРµРґРµР»РёС‚РµР»СЏ
 	public static String toString(Map<? extends Object, ? extends Object> m) {
 		StringBuffer sb = new StringBuffer();
 		if (m != null) {
