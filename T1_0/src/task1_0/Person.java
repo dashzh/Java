@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 
 public class Person {
 
-	// Константы для определения порогов минимального и максимального возраста
+	
 	public static final int MIN_AGE = 0;
 	public static final int MAX_AGE = 120;
 
