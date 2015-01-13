@@ -11,7 +11,7 @@ import task1_0.Person;
 
 public class PeopleTester extends Assert {
 
-	// Метод для запуска тестов в пакетном режиме
+	// Р”Р»СЏ Р·Р°РїСѓСЃРєР° РІ РїР°РєРµС‚РЅРѕРј СЂРµР¶РёРјРµ
 	public static void main(String[] args) {
 		Result result = JUnitCore.runClasses(PeopleTester.class);
 	    for (Failure failure : result.getFailures()) {
@@ -30,13 +30,12 @@ public class PeopleTester extends Assert {
 
 	@Test
 	public void generateWithArgsTest() {
-		// Проверяем корректность работы метода при выходе за границы диапазона значений возраста :
+		//Р•СЃР»Рё РІС‹С€Р»Рѕ Р·Р° РіСЂР°РЅРёС†С‹ РІРѕР·СЂР°СЃС‚Р°
 		Person person = personFabric.generate("Jack", "Johnson", Person.MIN_AGE - 1);
 		assertNull("Age restriction durring creating the Person object doesn't work correctly : person age less than min", person);
 		person = personFabric.generate("Alex", "Stewart", Person.MAX_AGE + 1);
 		assertNull("Age restriction durring creating the Person object doesn't work correctly : person age more than max", person);
 
-		// Полное покрытие данными :
 		for (int i = Person.MIN_AGE; i <= Person.MAX_AGE; i++) {
 			person = personFabric.generate("Jack", "Johnson", i);
 			assertNotNull("Unable to create person object with the age of " + i, person);
