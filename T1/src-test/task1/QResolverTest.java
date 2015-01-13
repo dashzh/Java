@@ -11,7 +11,7 @@ import task1.Root;
 
 public class QResolverTest extends Assert {
 
-	// Delta - для тестирования чисел с плавающей запятой 
+	// Delta - РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ С‡РёСЃРµР» СЃ РїР»Р°РІР°СЋС‰РµР№ Р·Р°РїСЏС‚РѕР№ 
 	public static final float DELTA = 0.00001f; 
 	
 	public static void main(String[] args) {
