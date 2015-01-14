@@ -32,15 +32,15 @@ public class MainServlet extends HttpServlet {
 
 	}
 
-	// Ìåòîä èíèöèàëèçàöèè ñåðâëåòà
+	// Метод инициализации сервлета
 	@Override
 	public void init(ServletConfig servletConfig) throws ServletException {
 		super.init(servletConfig);
-		// Ñ÷èòûâàåì ïàðàìåòð ñ ðàñïîëîæåíèåì ñòàòè÷åñêîãî ðåñóðñà
+		// Считываие параметра с расположением статического ресурса
 		String resource = servletConfig.getInitParameter("demoPage");
 		demoPageLocation =  servletConfig.getServletContext().getRealPath(resource);
 		
-		// Ñ÷èòûâàåì äàííûå èç øàáëîíà â ïåðåìåííóþ
+		// Считывание данных из шаблона в переменную
 		try (BufferedReader br = new BufferedReader(
 				new InputStreamReader(new FileInputStream(demoPageLocation), StandardCharsets.UTF_8))) {
 
