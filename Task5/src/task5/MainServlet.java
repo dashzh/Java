@@ -22,9 +22,8 @@ public class MainServlet extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 
-		// Формирование даты
+		// Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РґР°С‚С‹
 		String currentDateTime = USER_DATEFORMAT.format(Calendar.getInstance().getTime());
-		// Вывод времени сервера :
 		out.print(htmlTemplate.replace("%MESSAGE%", currentDateTime));
 	}
 	
@@ -33,15 +32,15 @@ public class MainServlet extends HttpServlet {
 
 	}
 
-	// Метод инициализации сервлета
+	// ГЊГҐГІГ®Г¤ ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГЁ Г±ГҐГ°ГўГ«ГҐГІГ 
 	@Override
 	public void init(ServletConfig servletConfig) throws ServletException {
 		super.init(servletConfig);
-		// Считываем параметр с расположением статического ресурса
+		// Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ ГЇГ Г°Г Г¬ГҐГІГ° Г± Г°Г Г±ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐГ¬ Г±ГІГ ГІГЁГ·ГҐГ±ГЄГ®ГЈГ® Г°ГҐГ±ГіГ°Г±Г 
 		String resource = servletConfig.getInitParameter("demoPage");
 		demoPageLocation =  servletConfig.getServletContext().getRealPath(resource);
 		
-		// Считываем данные из шаблона в переменную
+		// Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ Г¤Г Г­Г­Г»ГҐ ГЁГ§ ГёГ ГЎГ«Г®Г­Г  Гў ГЇГҐГ°ГҐГ¬ГҐГ­Г­ГіГѕ
 		try (BufferedReader br = new BufferedReader(
 				new InputStreamReader(new FileInputStream(demoPageLocation), StandardCharsets.UTF_8))) {
 
