@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<servlet>
+        <servlet-name>mainServlet</servlet-name>
+        <servlet-class>task.z05.MainServlet</servlet-class>
+        <!-- 
+        <init-param>
+            <param-name></param-name>
+            <param-value></param-value>
+        </init-param>
+        -->
+        <init-param>
+            <param-name>demoPage</param-name>
+            <param-value>/WEB-INF/demo.html</param-value>
+        </init-param>
+
+        <!-- Data base connection params -->
+        <init-param><param-name>Vendor</param-name><param-value>PostgreSQL</param-value></init-param>
+        <init-param><param-name>Host</param-name><param-value>127.0.0.1</param-value></init-param>
+        <init-param><param-name>Port</param-name><param-value>5432</param-value></init-param>
+        <init-param><param-name>DataBaseName</param-name><param-value>T2</param-value></init-param>
+        <init-param><param-name>Login</param-name><param-value>guest</param-value></init-param>
+        <init-param><param-name>Password</param-name><param-value>guest</param-value></init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+  
+    <!-- The mapping for the default servlet -->
+    <servlet-mapping>
+        <servlet-name>mainServlet</servlet-name>
+        <url-pattern>/mainServlet</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
