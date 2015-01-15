@@ -10,7 +10,7 @@ public class EntryPoint {
 	public static Properties PROPERTIES = null;
 
 	public static void main(String[] args) throws InvalidFileFormatException, FileNotFoundException, IOException {
-		// Считываем настройки из файла
+		// РЎС‡РёС‚С‹РІР°РµРј РЅР°СЃС‚СЂРѕР№РєРё РёР· С„Р°Р№Р»Р°
 		PROPERTIES = new Properties(System.getProperty("user.dir"));
 		TerminalApp app = new TerminalApp();
 		app.start();
