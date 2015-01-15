@@ -15,21 +15,20 @@ import task.z04.sql.SQLUtils;
 
 public class TerminalApp {
 
-	/**
-	 * Типы действий пользователя
-	 */
+	
+	 //РўРёРїС‹ РґРµР№СЃС‚РІРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	public interface Action {
-		int PRINT_ALL			= 1;
+		int PRINT_ALL		= 1;
 		int COUNT_USERS		= 2;
 		int PRINT_LAST_10	= 3;
 		int PRINT_LATE_10	= 4;
-		int LOGIN					= 5;
+		int LOGIN		= 5;
 		int PRINT_NA_MENU	= 6;
-		int EXIT						= 7;
+		int EXIT		= 7;
 		int PRINT_ALL_MINE	= 8;
 		int INSERT_MESSAGE	= 9;
-		int PRINT_MENU			= 10;
-		int LOG_OUT				= 11;
+		int PRINT_MENU		= 10;
+		int LOG_OUT		= 11;
 	}
 
 	private void insertNewMessage() throws SQLException {
@@ -114,7 +113,7 @@ public class TerminalApp {
 		System.out.println();
 		return loginSuccess;
 	}
-	//Давно не осуществляли вход
+	//Р”Р°РІРЅРѕ
 	private void printLate10LoggedIn() {
 		DataSource dataSource = DataSourceManager.getDataSource();
 		List<AppUser> users = SQLUtils.getLateLoginUsers(dataSource, 10);
@@ -124,7 +123,7 @@ public class TerminalApp {
 			AppUser user = users.get(i);
 			System.out.println(
 				MessageFormat.format(
-					"№{0} {1} {2} {3}",
+					"В№{0} {1} {2} {3}",
 					String.valueOf(i + 1),
 					SQLUtils.USER_DATEFORMAT.format(user.getLastLogonDate().getTime()),
 					user.getName(),
@@ -153,7 +152,7 @@ public class TerminalApp {
 			AppUser user = users.get(i);
 			System.out.println(
 				MessageFormat.format(
-					"№{0} {1} {2} {3}",
+					"В№{0} {1} {2} {3}",
 					String.valueOf(i + 1),
 					SQLUtils.USER_DATEFORMAT.format(user.getLastLogonDate().getTime()),
 					user.getName(),
@@ -162,7 +161,7 @@ public class TerminalApp {
 			);
 		}
 	}
-	//Зарегистрированные пользователи
+	//Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё
 	private void countUsers() {
 		DataSource dataSource = DataSourceManager.getDataSource();
 		int size = SQLUtils.getAllUsers(dataSource).size();
@@ -191,7 +190,7 @@ public class TerminalApp {
 	}
 	
 	/**
-	 * Запускает приложение терминала
+	 * Р—Р°РїСѓСЃРєР°РµС‚ РїСЂРёР»РѕР¶РµРЅРёРµ С‚РµСЂРјРёРЅР°Р»Р°
 	 */
 	public void start() {
 		if (stopped)
