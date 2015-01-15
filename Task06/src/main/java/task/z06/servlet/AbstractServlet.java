@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class AbstractServlet extends HttpServlet {
 
 	protected void printInfo(PrintWriter out, String content, String loginBlock) {
-		// Формируем дату
+		// Р¤РѕСЂРјРёСЂСѓРµРј РґР°С‚Сѓ
 		String currentDateTime = USER_DATEFORMAT.format(Calendar.getInstance().getTime());
 		String body = htmlBody;
 		body = body .replace("%TIME%", currentDateTime);
@@ -37,7 +37,7 @@ public abstract class AbstractServlet extends HttpServlet {
 	public void init(ServletConfig servletConfig) throws ServletException {
 		super.init(servletConfig);
 		ServletContext context = servletConfig.getServletContext();
-		// Считываем параметр с расположением ресурса тела сервлета
+		// РЎС‡РёС‚С‹РІР°РµРј РїР°СЂР°РјРµС‚СЂ СЃ СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµРј СЂРµСЃСѓСЂСЃР° С‚РµР»Р° СЃРµСЂРІР»РµС‚Р°
 		String resource = servletConfig.getInitParameter("bodyTemplate");
 		if (resource == null)
 			return;
