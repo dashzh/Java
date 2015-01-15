@@ -1,0 +1,5 @@
+task\z03\InvalidDestinationPathException.class
+task\z03\InvalidSourceFileException.class
+task\z03\ImageResizer$FilePathSegment.class
+task\z03\ImageResizer.class
+task\z03\IllegalProgramArgumentsException.class
