@@ -44,7 +44,7 @@ public class AuthorizedServlet extends AbstractServlet {
 	    	if (credentials == null)
 	    		seeOther(resp, MainServlet.MAIN_SERVLET);
 	    	try {
-	    		// Осуществление входа в БД
+	    		// РћСЃСѓС‰РµСЃС‚РІР»РµРЅРёРµ РІС…РѕРґР° РІ Р‘Р”
 	    		DoubleTuple<DataSource, AppUser> loginData = DataSourceManager.tryLogIn(credentials.first, credentials.second);
 	    		session.setAttribute("dbauth", loginData);
 	    	} catch (SQLException | DBStructuralIntegrityException | AuthorizationException e) {
