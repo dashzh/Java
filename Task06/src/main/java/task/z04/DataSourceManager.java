@@ -20,9 +20,8 @@ import task.z06.DoubleTuple;
 import task.z06.servlet.MainServlet;
 
 /**
- * Менеджер доступа к БД. Отвечает за вопросы авторизации пользователей.
- * Ориентирован на работу в однопоточной среде. 
- */
+ * РњРµРЅРµРґР¶РµСЂ РґРѕСЃС‚СѓРїР° Рє Р‘Р”. РћС‚РІРµС‡Р°РµС‚ Р·Р° РІРѕРїСЂРѕСЃС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
+  */
 public final class DataSourceManager {
 
 	public static DoubleTuple<DataSource, AppUser> tryLogIn(String loginName, String password)
@@ -71,13 +70,13 @@ public final class DataSourceManager {
 				results
 			);
 
-			// Обновляем время входа пользователя. Генерация значения времени должно происходить на сервере.
+			// РћР±РЅРѕРІР»СЏРµРј РІСЂРµРјСЏ РІС…РѕРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. Р“РµРЅРµСЂР°С†РёСЏ Р·РЅР°С‡РµРЅРёСЏ РІСЂРµРјРµРЅРё РґРѕР»Р¶РЅРѕ РїСЂРѕРёСЃС…РѕРґРёС‚СЊ РЅР° СЃРµСЂРІРµСЂРµ.
 			SQLUtils.executeUpdate(
 				pgDataSource,
 				SQLUtils.QueryTemplate.UPD_LAST_LOGON_DATE_BY_ACCOUNT_ID,
 				new Object[]{ accountId }
 			);
-			// Получаем новое значение времени входа пользователя
+			// РџРѕР»СѓС‡Р°РµРј РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РІСЂРµРјРµРЅРё РІС…РѕРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 			SQLUtils.executeQuery(
 				pgDataSource,
 				SQLUtils.QueryTemplate.GET_LAST_LOGON_DATE_BY_ACCOUNT_ID,
@@ -107,7 +106,7 @@ public final class DataSourceManager {
 		dataSource.setUser(MainServlet.PROPERTIES.getGuestUser());
 		dataSource.setPassword(MainServlet.PROPERTIES.getGuestUser());
 
-		// Проверяем соединение с БД
+		// РџСЂРѕРІРµСЂСЏРµРј СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”
 		try (Connection con = dataSource.getConnection()) {} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
