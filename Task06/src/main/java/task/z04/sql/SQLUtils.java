@@ -23,7 +23,7 @@ import task.z04.entity.UserMessage;
 import task.z04.exception.NotSupportedArgumentTypeException;
 
 /**
- * Вспомогательный класс содержащий рутины для работы с БД
+ * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ СЃРѕРґРµСЂР¶Р°С‰РёР№ СЂСѓС‚РёРЅС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р‘Р”
  */
 public class SQLUtils {
 
@@ -39,11 +39,7 @@ public class SQLUtils {
 	}
 
 	/**
-	 * Добавляет новое сообщение указанного пользователя.
-	 * @param dataSource Источник данных через который производится операция
-	 * @param user Пользователи от имени которого сообщение будет добавлено
-	 * @param message Искомое сообщение
-	 * @throws SQLException в случае сбоя при работе с БД
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	 */
 	public static void insertNewMessage(DataSource dataSource, AppUser user, String message) throws SQLException {
 		try {
@@ -58,9 +54,7 @@ public class SQLUtils {
 	}
 	
 	/**
-	 * Возвращает всех пользователей зарегистрированных в БД.
-	 * @param dataSource Источник данных через который производится операция
-	 * @return Список со всеми пользователями, зарегистрированными в БД.
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РІ Р‘Р”.
 	 */
 	public static List<AppUser> getAllUsers(DataSource dataSource) {
 		List<AppUser> users = new ArrayList<AppUser>();
@@ -89,12 +83,6 @@ public class SQLUtils {
 		return users;
 	}
 
-	/**
-	 * Возвращает список с указанным количеством пользователей, которые осуществляли вход в систему последними.
-	 * @param dataSource Источник данных через который производится операция
-	 * @param usersLimit максимальное количество пользователей
-	 * @return список с указанным количеством пользователей, которые осуществляли вход в систему последними
-	 */
 	public static List<AppUser> getLastLoginUsers(DataSource dataSource, int usersLimit) {
 		List<AppUser> allUsers = getAllUsers(dataSource);
 		TreeSet<AppUser> users = new TreeSet<AppUser>(Collections.reverseOrder());
@@ -109,12 +97,6 @@ public class SQLUtils {
 	}
 	
 	
-	/**
-	 * Возвращает список с указанным количеством пользователей, которые давно не осуществляли вход в систему.
-	 * @param dataSource Источник данных через который производится операция
-	 * @param usersLimit максимальное количество пользователей
-	 * @return список с указанным количеством пользователей, которые давно не осуществляли вход в систему
-	 */
 	public static List<AppUser> getLateLoginUsers(DataSource dataSource, int usersLimit) {
 		List<AppUser> allUsers = getAllUsers(dataSource);
 		Set<AppUser> users = new TreeSet<AppUser>(allUsers);
@@ -128,10 +110,8 @@ public class SQLUtils {
 	}
 	
 	/**
-	 *	Возвращает сообщения указанного пользователя 
-	 * @param user пользователь сообщения которого необходимо получить
-	 * @return сообщения указанного пользователя
-	 */
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РІ Р‘Р”.
+	  */
 	public static List<UserMessage> getAllMessages(DataSource dataSource, AppUser user) {
 		List<UserMessage> list = new ArrayList<UserMessage>();
 		List<String[]> messages = new ArrayList<String[]>();
@@ -163,10 +143,7 @@ public class SQLUtils {
 	public static final SimpleDateFormat USER_DATEFORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 	
 	/**
-	 * Парсит дату представленную во внутреннем представлении БД PostgreSQL
-	 * @param potentilaDate строка со значением даты
-	 * @return объект даты
-	 * @throws ParseException в случае ошибки парсинга, когда строка не соответствует формату {@link SQLUtils#POSTGRES_DATEFORMAT}
+	 * РџР°СЂСЃРёС‚ РґР°С‚Сѓ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСѓСЋ РІРѕ РІРЅСѓС‚СЂРµРЅРЅРµРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё Р‘Р” PostgreSQL
 	 */
 	public static Calendar parseDateFromPostgresFormat(String potentilaDate) throws ParseException {
 		String potentialTime = potentilaDate.substring(0, potentilaDate.indexOf('.'));
@@ -177,18 +154,18 @@ public class SQLUtils {
 		return calendar;
 	}
 	
-	// Следующие рутины полезны в случаях, когда выполняются запросы над не очень большим объемом данных, т.к.
-	// они зачитывают все данные из результата :
+	// Р’ СЃР»СѓС‡Р°СЏС…, РєРѕРіРґР° РІС‹РїРѕР»РЅСЏСЋС‚СЃСЏ Р·Р°РїСЂРѕСЃС‹ РЅР°Рґ РЅРµ РѕС‡РµРЅСЊ Р±РѕР»СЊС€РёРј РѕР±СЉРµРјРѕРј РґР°РЅРЅС‹С…, С‚.Рє.
+	// РѕРЅРё Р·Р°С‡РёС‚С‹РІР°СЋС‚ РІСЃРµ РґР°РЅРЅС‹Рµ РёР· СЂРµР·СѓР»СЊС‚Р°С‚Р° :
 	
 	/**
-	 * Выполняет операцию update по указанному шаблону с указанными аргументами в БД представленной
-	 * указанным источником данных.
-	 * @param ds Источник данных через который производится операция
-	 * @param preparedQueryTemplate шаблон SQL запроса определенный в {@link SQLUtils#QueryTemplate}
-	 * @param args аргументы для подстановки в запрос. Поддерживаются аргументы основных типов : int, long,
+	 * Р’С‹РїРѕР»РЅСЏРµС‚ РѕРїРµСЂР°С†РёСЋ update РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ С€Р°Р±Р»РѕРЅСѓ СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё РІ Р‘Р” РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅРѕР№
+	 * СѓРєР°Р·Р°РЅРЅС‹Рј РёСЃС‚РѕС‡РЅРёРєРѕРј РґР°РЅРЅС‹С….
+	 * @param ds РСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РѕРїРµСЂР°С†РёСЏ
+	 * @param preparedQueryTemplate С€Р°Р±Р»РѕРЅ SQL Р·Р°РїСЂРѕСЃР° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РІ {@link SQLUtils#QueryTemplate}
+	 * @param args Р°СЂРіСѓРјРµРЅС‚С‹ РґР»СЏ РїРѕРґСЃС‚Р°РЅРѕРІРєРё РІ Р·Р°РїСЂРѕСЃ. РџРѕРґРґРµСЂР¶РёРІР°СЋС‚СЃСЏ Р°СЂРіСѓРјРµРЅС‚С‹ РѕСЃРЅРѕРІРЅС‹С… С‚РёРїРѕРІ : int, long,
 	 * float, double, boolean, String
-	 * @throws SQLException в случае некорректного выражения результирующего SQL запроса
-	 * @throws NotSupportedArgumentTypeException если передан аргумент неподдерживаемого типа
+	 * @throws SQLException РІ СЃР»СѓС‡Р°Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ SQL Р·Р°РїСЂРѕСЃР°
+	 * @throws NotSupportedArgumentTypeException РµСЃР»Рё РїРµСЂРµРґР°РЅ Р°СЂРіСѓРјРµРЅС‚ РЅРµРїРѕРґРґРµСЂР¶РёРІР°РµРјРѕРіРѕ С‚РёРїР°
 	 */
 	public static void executeUpdate(DataSource ds, String preparedQueryTemplate, Object[] args)
 		throws SQLException, NotSupportedArgumentTypeException {
@@ -201,21 +178,17 @@ public class SQLUtils {
 	}
 
 	/**
-	 * Выполняет операцию select по указанному шаблону с указанными аргументами в БД представленной
-	 * указанным источником данных. 
-	 * @param ds Источник данных через который производится операция
-	 * @param preparedQueryTemplate шаблон SQL запроса определенный в {@link SQLUtils#QueryTemplate}
-	 * @param args аргументы для подстановки в запрос. Поддерживаются аргументы основных типов : int, long,
+	 * Р’С‹РїРѕР»РЅСЏРµС‚ РѕРїРµСЂР°С†РёСЋ select РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ С€Р°Р±Р»РѕРЅСѓ СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё РІ Р‘Р” РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅРѕР№
+	 * СѓРєР°Р·Р°РЅРЅС‹Рј РёСЃС‚РѕС‡РЅРёРєРѕРј РґР°РЅРЅС‹С…. 
+	 * @param ds РСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РѕРїРµСЂР°С†РёСЏ
+	 * @param preparedQueryTemplate С€Р°Р±Р»РѕРЅ SQL Р·Р°РїСЂРѕСЃР° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РІ {@link SQLUtils#QueryTemplate}
+	 * @param args Р°СЂРіСѓРјРµРЅС‚С‹ РґР»СЏ РїРѕРґСЃС‚Р°РЅРѕРІРєРё РІ Р·Р°РїСЂРѕСЃ. РџРѕРґРґРµСЂР¶РёРІР°СЋС‚СЃСЏ Р°СЂРіСѓРјРµРЅС‚С‹ РѕСЃРЅРѕРІРЅС‹С… С‚РёРїРѕРІ : int, long,
 	 * float, double, boolean, String
-	 * @param result список в который будет записан результат выполнения запроса
-	 * @throws SQLException в случае некорректного выражения результирующего SQL запроса
-	 * @throws NotSupportedArgumentTypeException если передан аргумент неподдерживаемого типа
+	 * @param result СЃРїРёСЃРѕРє РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ Р·Р°РїРёСЃР°РЅ СЂРµР·СѓР»СЊС‚Р°С‚ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°
+	 * @throws SQLException РІ СЃР»СѓС‡Р°Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ SQL Р·Р°РїСЂРѕСЃР°
+	 * @throws NotSupportedArgumentTypeException РµСЃР»Рё РїРµСЂРµРґР°РЅ Р°СЂРіСѓРјРµРЅС‚ РЅРµРїРѕРґРґРµСЂР¶РёРІР°РµРјРѕРіРѕ С‚РёРїР°
 	 */
 	public static void executeQuery(DataSource ds, String preparedQueryTemplate, Object[] args, List<String[]> result)
-		// Порядок закрытия ресурсов :
-		// 1). ResultSet's
-		// 2). Statement's
-		// 3). Connection's
 		throws SQLException, NotSupportedArgumentTypeException {
 		try (Connection connection = ds.getConnection()) {
 			try (PreparedStatement statement = connection.prepareStatement(preparedQueryTemplate)) {
