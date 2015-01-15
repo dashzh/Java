@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html" />
+   </head>
+   <body>
+		<h1>Система обмена сообщениями</h1>
+		<pre>Текущее время : %TIME%</pre>
+		<pre>Выберете пункт меню</pre>
+		<table>
+			<thead></thead>
+				<tbody>
+					<tr>
+						<td>
+							<form id="main-form" action="mainServlet" method="post">
+							<div>
+								<select size="3" name="choise">
+									<option value="1">Отобразить сообщения всех пользователей</option>
+									<option value="2">Информация о количестве пользователей</option>
+									<option value="3">Информация о последних 10 пользователях недавно заходивших в систему</option>
+									<option value="4">Информация о последних 10 пользователях давно не заходивших в систему</option>
+								</select>
+								<input type="submit" value="Выбрать" onClick="base64();"></input>
+							</div>
+		
+							<div>%CONTENT%</div>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+							%LOGIN_BLOCK%
+							</div>						
+						</td>
+					</tr>
+			</tbody>
+		</table>
+		
+
+   </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<servlet>
+        <servlet-name>mainServlet</servlet-name>
+        <servlet-class>task.z06.servlet.MainServlet</servlet-class>
+
+        <init-param>
+            <param-name>bodyTemplate</param-name>
+            <param-value>WEB-INF/template1.html</param-value>
+        </init-param>
+
+        <!-- Data base connection params -->
+        <init-param><param-name>Vendor</param-name><param-value>PostgreSQL</param-value></init-param>
+        <init-param><param-name>Host</param-name><param-value>127.0.0.1</param-value></init-param>
+        <init-param><param-name>Port</param-name><param-value>5432</param-value></init-param>
+        <init-param><param-name>DataBaseName</param-name><param-value>T2</param-value></init-param>
+        <init-param><param-name>Login</param-name><param-value>guest</param-value></init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+	<servlet>
+        <servlet-name>authServlet</servlet-name>
+        <servlet-class>task.z06.servlet.AuthorizedServlet</servlet-class>
+    </servlet>
+  
+
+    <!-- The mapping for the default servlet -->
+    <servlet-mapping>
+        <servlet-name>mainServlet</servlet-name>
+        <url-pattern>/mainServlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>authServlet</servlet-name>
+        <url-pattern>/authServlet/*</url-pattern>
+	</servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+</web-app>
