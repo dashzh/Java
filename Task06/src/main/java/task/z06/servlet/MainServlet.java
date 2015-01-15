@@ -22,7 +22,7 @@ public class MainServlet extends AbstractServlet {
 	public static final String MAIN_SERVLET = "mainServlet";
 	
 	/**
-	 * Типы действий пользователя
+	 * РўРёРїС‹ РґРµР№СЃС‚РІРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 */
 	public interface Action {
 		int PRINT_ALL			= 1;
@@ -86,7 +86,7 @@ public class MainServlet extends AbstractServlet {
 		printInfo(resp.getWriter(), content, additional);
 	}
 
-	// Метод инициализации сервлета
+	// РњРµС‚РѕРґ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРµСЂРІР»РµС‚Р°
 	@Override
 	public void init(ServletConfig servletConfig) throws ServletException {
 		super.init(servletConfig);
