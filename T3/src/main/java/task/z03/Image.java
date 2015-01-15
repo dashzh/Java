@@ -62,16 +62,15 @@ public class Image {
 				)
 			);
 
-			// Считываем изображение из файла в буффер :
+			// РЎС‡РёС‚С‹РІР°РµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ РёР· С„Р°Р№Р»Р° РІ Р±СѓС„С„РµСЂ 
 			BufferedImage img = ImageIO.read(sourceFile);
-			// Изменяем размеры изображения :
+			// РР·РјРµРЅСЏРµРј СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 
 			img = Scalr.resize(img, Method.ULTRA_QUALITY, Mode.FIT_EXACT, width, height);
-			// Сохраняем изображение :
+			// РЎРѕС…СЂР°РЅСЏРµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ 
 			ImageIO.write(img, "jpg", destinationFile);
 			System.out.println("File has been successfully created");
 
 		} catch (IllegalProgramArgumentsException e) {
-			//Cообщение с подсказкой об использовании программы :
 			ShowHelp();
 		} catch (NumberFormatException e) {
 			System.out.println("wrong value of width or height");
@@ -85,10 +84,10 @@ public class Image {
 	}
 
 	/**
-	 * Фрагментирует информацию о существующем файле на составляющие :
-	 * директория, имя файла и расширение файла и записывает результат в распределитель result.
-	 * @param path путь к искомому файлу;
-	 * @param result распределитель, в который записывается результат.
+	 * Р¤СЂР°РіРјРµРЅС‚РёСЂСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРј С„Р°Р№Р»Рµ РЅР° СЃРѕСЃС‚Р°РІР»СЏСЋС‰РёРµ :
+	 * РґРёСЂРµРєС‚РѕСЂРёСЏ, РёРјСЏ С„Р°Р№Р»Р° Рё СЂР°СЃС€РёСЂРµРЅРёРµ С„Р°Р№Р»Р° Рё Р·Р°РїРёСЃС‹РІР°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ СЂР°СЃРїСЂРµРґРµР»РёС‚РµР»СЊ result.
+	 * @param path РїСѓС‚СЊ Рє РёСЃРєРѕРјРѕРјСѓ С„Р°Р№Р»Сѓ;
+	 * @param result СЂР°СЃРїСЂРµРґРµР»РёС‚РµР»СЊ, РІ РєРѕС‚РѕСЂС‹Р№ Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ СЂРµР·СѓР»СЊС‚Р°С‚.
 	 */
 	public static void splitFilePath(File path, Map<FilePathSegment, String> result) {
 		String name = path.getName();
